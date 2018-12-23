@@ -1,0 +1,8 @@
+node_modules
+lerna-debug.log
+npm-debug.log
+.idea
+packages/*/package-lock.json
+packages/*/dist*
+tests/cypress/screenshots
+tests/cypress/videos

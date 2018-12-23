@@ -1,0 +1,20 @@
+@import '~breakpoint-sass/stylesheets/breakpoint';
+@import "style.scss-import.scss";
+@import "globs/**/*";
+
+$colour: red;
+
+body {
+  background: $colour;
+  color: green;
+}
+
+::placeholder {
+  color: black;
+}
+
+@include breakpoint(800px) {
+  body {
+    background-color: green;
+  }
+}
