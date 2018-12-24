@@ -14,6 +14,7 @@ const merge = require('webpack-merge');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Define the environment.
 let mode = 'production';
@@ -83,6 +84,21 @@ const baseConfig = {
         parser: { requireEnsure: false },
       },
 
+      // Custom CSS loaders which apply conditionally
+      // If a stylesheet is imported into JavaScript, leave the CSS embedded in the JS and dynamically inject into the web page
+      // Otherwise, extract the CSS into its own file
+      {
+        test: /(\.css)|(\.scss)$/,
+        oneOf: [
+          {
+            issuer: /\.js$/,
+            use: 'style-loader',
+          }, {
+            use: MiniCssExtractPlugin.loader,
+          },
+        ],
+      },
+
       // CSS loaders, which should apply to all CSS, including SCSS
       // Note: /(\.css)|(\.scss)$/ and /\.[s]?css$/ match the same files
       // We use seperate regular expressions to prevent webpack-merge from merging the rules together
@@ -144,6 +160,11 @@ const baseConfig = {
   plugins: [
     // Cleanup output of stdout logs.
     new FriendlyErrorsWebpackPlugin(),
+    // Extract the styles into their own file
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     // Makes some environment variables available to the JS code
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(mode),
