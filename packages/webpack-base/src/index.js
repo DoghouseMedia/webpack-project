@@ -176,8 +176,8 @@ const baseConfig = {
       injectChanges: true,
       port: bsPort,
       // Don't reload if using webpack serve.
-      reload: (!process.env.WEBPACK_SERVE)
-    })
+      reload: (!process.env.WEBPACK_SERVE),
+    }, {injectCss: true}),
   ],
 };
 
