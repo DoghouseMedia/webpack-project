@@ -2,9 +2,6 @@ const { createConfig } = require('@doghouse/webpack-base');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
-// Prevent JS being created for CSS only entry points.
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
-
 // Define paths.
 const outputPath = path.resolve(__dirname, 'dist');
 const outputPathCss = outputPath + '/css';
@@ -27,7 +24,6 @@ module.exports.push(createConfig({
     path: outputPathCss,
   },
   plugins: [
-    new FixStyleOnlyEntriesPlugin(),
     new CleanWebpackPlugin(outputPathCss),
   ],
 }));

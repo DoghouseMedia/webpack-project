@@ -15,6 +15,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 // Define the environment.
 let mode = 'production';
@@ -158,6 +159,8 @@ const baseConfig = {
   },
 
   plugins: [
+    // Prevent webpack generating JS in the CSS dir.
+    new FixStyleOnlyEntriesPlugin(),
     // Cleanup output of stdout logs.
     new FriendlyErrorsWebpackPlugin(),
     // Extract the styles into their own file
