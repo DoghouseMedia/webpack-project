@@ -9,6 +9,7 @@ const argv = require('yargs').argv;
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const path = require('path');
+const dotenv = require('dotenv');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -18,6 +19,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 // Define the environment.
+dotenv.config();
 let mode = 'production';
 if (process.env.NODE_ENV) {
   mode = process.env.NODE_ENV;
