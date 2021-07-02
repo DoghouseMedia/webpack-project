@@ -108,13 +108,13 @@ for live injection of CSS and sync of actions between browser. Browsersync port 
 |------|-------------|
 | [**webpack**][1] | Webpack is the engine that allows us to process files and bundle them into packages according to rules that we specify. |
 | [**babel-core**][2] | Babel is a JavaScript compiler. We write our JavaScript according to the latest spec (ESNext), and Babel compiles it into a specified format (see babel-preset-env). This package is the core compiler for Babel. |
-| [**node-sass**][3] | The engine of the popular stylesheet preprocessor, Sass. |
+| [**sass**][3] | The engine of the popular stylesheet preprocessor, Sass. |
 | [**post-css**][4] | A tool for applying transformations to CSS, such as adding browser prefixes with Autoprefixer. |
 | [**breakpoint-sass**][5] | Provides `breakpoint` mixin for dealing with media queries. |
 
 [1]: https://www.npmjs.com/package/webpack
 [2]: https://www.npmjs.com/package/babel-core
-[3]: https://www.npmjs.com/package/node-sass
+[3]: https://www.npmjs.com/package/sass
 [4]: https://github.com/postcss/postcss
 [5]: http://breakpoint-sass.com
 
